@@ -14,7 +14,7 @@ function App() {
       <div className="content">
         {
           NAVS.map(item => (
-            <div className={item.id} id={item.id}>{item.id}</div>
+            <div className={item.id} id={item.id} key={item.id}>{item.id}</div>
           ))
         }
       </div>
