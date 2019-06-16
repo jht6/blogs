@@ -1,0 +1,35 @@
+
+.App {
+  height: 100vh;
+  position: relative;
+}
+
+.content {
+  width: 500px;
+  margin: 0 auto;
+
+
+  border: 1px solid red;
+}
+
+.block1 {
+  border: 1px solid red;
+  height: 500px;
+}
+
+.block2 {
+  border: 1px solid blue;
+  height: 700px;
+}
+
+.block3 {
+  border: 1px solid green;
+  height: 800px;
+}
+
+.sideNavBox {
+  width: 100px;
+  position: fixed;
+  top: 40%;
+  right: 5%;
+}
