@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Download</title>
+</head>
+<body>
+  <a href="/file.txt" download>使用&lt;a&gt;直接指向server静态文件目录的文件, 下载到 [file.txt]</a>
+  <br><br>
+
+  <a href="/download" download="custom.txt">使用&lt;a&gt;GET请求server接口，并用download属性自定义文件名，下载到 [custom.txt]</a>
+  <br><br>
+
+  <a href="/download?name=header.txt" download="custom.txt">使用&lt;a&gt;GET请求server接口，并用download属性自定义文件名，但后端Content-Disposition响应头规定了文件名，优先级高于download属性，下载到 [header.txt]</a>
+  <br><br>
+
+  <button id="download-btn">使用fetch发送异步请求进行下载，下载到 [fetch.txt]</button>
+
+  <script>
+    const btn = document.getElementById('download-btn');
+    btn.onclick = async () => {
+      // 获取文件
+      const res = await fetch('/download', {
+        method: 'POST'
+      });
+
+      // 转换格式
+      const blob = await res.blob();
+
+      // 生成<a>触发文件下载
+      const a = document.createElement('a');
+      a.href = window.URL.createObjectURL(blob);
+      a.download = 'fetch.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    };
+  </script>
+</body>
+</html>
