@@ -1,0 +1,19 @@
+{
+  "name": "issue-61",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepbtojs": "pbjs frame.proto payload.proto -t static-module -p src -o src/proto.js --keep-case --force-long",
+    "jstotsd": "pbts src/proto.js -o src/proto.d.ts",
+    "postpbtojs": "pbjs frame.proto payload.proto -t static-module -p src -o src/proto.js --keep-case --force-long --no-verify --no-convert --no-delimited --no-beautify --no-comments -l eslint-disable",
+    "pbtots": "npm run prepbtojs; npm run jstotsd; npm run postpbtojs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "protobufjs": "~6.8.9"
+  }
+}

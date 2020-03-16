@@ -1,0 +1,7 @@
+syntax = "proto2";
+package demo_proto;
+
+message Frame {
+  required uint64 seqid   = 1;
+  required bytes  payload	= 2;
+}
